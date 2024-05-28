@@ -63,6 +63,7 @@ jobs:
 
     - name: Modify feeds.conf.default
       run: |
+        sed -i '/src-git routing /s/^/#/' openwrt/feeds.conf.default
         echo 'src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02' >> openwrt/feeds.conf.default
 
     - name: Revise mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
