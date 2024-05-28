@@ -60,7 +60,11 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        
+
+    - name: Modify feeds.conf.default
+      run: |
+        echo 'src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02' >> openwrt/feeds.conf.default
+
     - name: Revise mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
       run: |
         cp -f mt7621_xiaomi_mi-router-4a-3g-v2.dtsi openwrt/target/linux/ramips/dts
